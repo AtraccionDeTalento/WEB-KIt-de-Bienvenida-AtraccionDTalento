@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tool Kit de Bienvenida | Corporación Educativa USIL</title>
+  <meta name="description" content="¡Nos alegra que seas parte del equipo! Aquí encontrarás todo lo que necesitas para tus primeras semanas en USIL." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+
+<body>
+
+  <!-- Vista de Escritorio - Fondo y elementos flotantes -->
+  <div class="desktop-layout">
+
+    <!-- Código QR (Solo visible en escritorio) -->
+    <div class="desktop-qr">
+      <span class="qr-text">View on mobile</span>
+      <!-- SVG Real del QR -->
+      <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 29 29" width="84" height="84" style="background:#fff; padding:6px; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.1);">
+        <path d="M0 0h9v9H0zm1 1v7h7V1zm2 2h3v3H3zm-5 7h9v9H0zm1 1v7h7v-7zm2 2h3v3H3zm13-12h9v9h-9zm1 1v7h7V1zm2 2h3v3h-3zm-9 11v1h3v-1zm4 0h1v1h-1zm1 0v2h2v-2zm2 0h1v1h-1zm1 0v1h1v-1zm-6 2h1v1h-1zm2 0v1h1v-1zm1 0h1v1h-1zm3 0v1h1v-1zm-7 2h1v1h-1zm1 0v1h2v-1zm4 0h1v1h-1zm1 0v1h1v-1zm-4 2h1v2h1v-2zm2 0h2v1h-2zm3 0h1v1h-1zm-4 2h2v-1h-2zm-3-10h1v2h-1zm1 1h1v1h-1zm2 1h1v1h-1zm3-3h1v1h-1zm0 2h1v1h-1zm1 1h1v1h-1zm1-2h1v1h-1z" fill="#002b5e"/>
+      </svg>
+    </div>
+
+    <!-- Contenedor central simulando pantalla móvil -->
+    <div class="phone-container">
+
+      <!-- Botón compartir (top right dentro del celular) -->
+      <button class="share-btn-top" id="shareBtn" title="Compartir">
+        <i class="fas fa-arrow-up-from-bracket"></i>
+      </button>
+
+      <div class="page-wrapper">
+        <main class="container">
+
+          <!-- PERFIL / HEADER -->
+          <section class="profile">
+            <!-- Logo USIL -->
+            <div class="usil-logo-wrap">
+              <img src="usil_logo.png" alt="Corporación Educativa USIL" class="header-logo" />
+            </div>
+
+            <h1 class="welcome-title">¡Nos alegra que seas parte del equipo!</h1>
+            <p class="welcome-subtitle">
+              Aquí encontrarás todo lo que necesitas para tus primeras semanas.
+            </p>
+          </section>
+
+          <!-- LINKS / ACCIONES -->
+          <section class="links-section">
+
+            <!-- Conoce a tu Business Partner -->
+            <div class="link-card" data-modal="partnerModal" id="btn-partner">
+              <div class="link-icon-circle partner-icon">
+                <img src="partner_icon.png" alt="Business Partner" class="link-icon-img" />
+              </div>
+              <span class="link-title">Conoce a tu Business Partner</span>
+              <button class="link-menu-btn"><i class="fas fa-ellipsis-vertical"></i></button>
+            </div>
+
+            <!-- Plataformas Virtuales -->
+            <div class="link-card" data-modal="platformsModal" id="btn-platforms">
+              <div class="link-icon-circle platforms-icon">
+                <img src="platforms_icon.png" alt="Plataformas Virtuales" class="link-icon-img" />
+              </div>
+              <span class="link-title">Plataformas Virtuales</span>
+              <button class="link-menu-btn"><i class="fas fa-ellipsis-vertical"></i></button>
+            </div>
+
+            <!-- Estacionamiento -->
+            <div class="link-card" data-modal="parkingModal" id="btn-parking">
+              <div class="link-icon-circle parking-icon">
+                <img src="parking_icon.png" alt="Estacionamiento" class="link-icon-img" />
+              </div>
+              <span class="link-title">Estacionamiento</span>
+              <button class="link-menu-btn"><i class="fas fa-ellipsis-vertical"></i></button>
+            </div>
+
+            <!-- Nuestros Campus -->
+            <div class="link-card" data-modal="campusModal" id="btn-campus">
+              <div class="link-icon-circle campus-icon">
+                <img src="campus_icon.png" alt="Nuestros Campus" class="link-icon-img" />
+              </div>
+              <span class="link-title">Nuestros Campus</span>
+              <button class="link-menu-btn"><i class="fas fa-ellipsis-vertical"></i></button>
+            </div>
+
+            <!-- Principales Contactos -->
+            <div class="link-card" data-modal="contactsModal" id="btn-contacts">
+              <div class="link-icon-circle contacts-icon">
+                <img src="contacts_icon.png" alt="Principales Contactos" class="link-icon-img" />
+              </div>
+              <span class="link-title">Principales Contactos</span>
+              <button class="link-menu-btn"><i class="fas fa-ellipsis-vertical"></i></button>
+            </div>
+
+            <!-- Separador -->
+            <p class="section-label">Conoce nuestra línea de emergencia:</p>
+
+            <!-- USIL SOS -->
+            <div class="link-card emergency-card" data-modal="sosModal" id="btn-sos">
+              <div class="link-icon-circle sos-icon">
+                <img src="sos_icon.png" alt="USIL SOS" class="link-icon-img" />
+              </div>
+              <span class="link-title">USIL SOS</span>
+              <button class="link-menu-btn"><i class="fas fa-ellipsis-vertical"></i></button>
+            </div>
+
+          </section>
+
+          <!-- Espacio de pie de página -->
+          <div style="height: 180px;"></div>
+
+        </main>
+      </div>
+
+      <!-- SECCIÓN INFERIOR FIJA CON REDES Y HASH -->
+      <div class="bottom-fade-container">
+        <div class="bottom-actions">
+          <p class="hashtag">#DejandoHuella</p>
+
+          <!-- LINKEDIN LINK -->
+          <div class="linkedin-footer-wrap">
+            <span class="linkedin-text">Síguenos en LinkedIn:</span>
+            <a href="https://www.linkedin.com/company/corporaci%C3%B3n-educativa-usil/posts/?feedView=all" target="_blank" class="linkedin-btn" title="LinkedIn Corporación Educativa USIL">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div> <!-- /phone-container -->
+  </div> <!-- /desktop-layout -->
+
+
+  <!-- =====================
+       MODALES DETALLADOS
+       ===================== -->
+
+  <!-- 1. MODAL: Conoce a tu Business Partner -->
+  <div class="modal-overlay" id="partnerModal">
+    <div class="modal-box modal-lg">
+      <div class="modal-header">
+        <h2 class="modal-title"><i class="fas fa-users-rectangle"></i> Conoce a tu Business Partner</h2>
+        <button class="modal-close-icon-btn" onclick="closeModal('partnerModal')"><i class="fas fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-desc">
+          En la <strong>Gerencia de Talento y Cultura</strong>, tu Business Partner te brindará apoyo y asesoría en tus actividades diarias y tu crecimiento en la organización. Identifica quién es tu BP según tu área:
+        </p>
+
+        <div class="partners-grid">
+          <!-- Higa -->
+          <div class="partner-card">
+            <img src="partner_higa.jpg" alt="Melissa Higa" class="partner-img" />
+            <h3 class="partner-name">Melissa Higa</h3>
+            <a href="mailto:mhiga@usil.edu.pe" class="partner-email"><i class="fas fa-envelope"></i> mhiga@usil.edu.pe</a>
+            <div class="partner-areas">
+              <strong>Sedes / Áreas a cargo:</strong>
+              <ul>
+                <li>Facultad de Ciencias de la Salud</li>
+                <li>Internacional / Center for Global Education</li>
+                <li>Center for Language Studies</li>
+                <li>Vicepresidencia Senior / Gerencia General</li>
+                <li>Vicepresidencia de Comunicaciones e Innovación Digital</li>
+                <li>Vicepresidencia de Tecnología de Información</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Reyes -->
+          <div class="partner-card">
+            <img src="partner_reyes.jpg" alt="Lesley Reyes" class="partner-img" />
+            <h3 class="partner-name">Lesley Reyes</h3>
+            <a href="mailto:lreyes@usil.edu.pe" class="partner-email"><i class="fas fa-envelope"></i> lreyes@usil.edu.pe</a>
+            <div class="partner-areas">
+              <strong>Sedes / Áreas a cargo:</strong>
+              <ul>
+                <li>Pregrado Ejecutivo</li>
+                <li>Facultad de Adm. Hotelera, Turismo y Gastronomía</li>
+                <li>Facultad de Arquitectura, Urbanismo y Territorio</li>
+                <li>Facultad de Artes y Humanidades</li>
+                <li>Facultad de Ciencias Empresariales</li>
+                <li>Vicepresidencia de Finanzas</li>
+                <li>Gerencia de Administración y Seguridad</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Salazar -->
+          <div class="partner-card">
+            <img src="partner_salazar.jpg" alt="Fátima Salazar" class="partner-img" />
+            <h3 class="partner-name">Fátima Salazar</h3>
+            <a href="mailto:msalazar@usil.edu.pe" class="partner-email"><i class="fas fa-envelope"></i> msalazar@usil.edu.pe</a>
+            <div class="partner-areas">
+              <strong>Sedes / Áreas a cargo:</strong>
+              <ul>
+                <li>Facultad de Derecho</li>
+                <li>Facultad de Ingeniería e IA</li>
+                <li>Facultad de Educación</li>
+                <li>Vicerrectorado Académico</li>
+                <li>Vicerrectorado de Investigación</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Jara -->
+          <div class="partner-card">
+            <img src="partner_jara.png" alt="Carlos Jara" class="partner-img" />
+            <h3 class="partner-name">Carlos Jara</h3>
+            <a href="mailto:cjara@usil.edu.pe" class="partner-email"><i class="fas fa-envelope"></i> cjara@usil.edu.pe</a>
+            <div class="partner-areas">
+              <strong>Sedes / Áreas a cargo:</strong>
+              <ul>
+                <li>Rectorado (Secretaría General - Empleabilidad e Innovación)</li>
+                <li>Instituto de Emprendedores</li>
+                <li>Gerencia de Talento y Cultura / Escuela de Posgrado</li>
+                <li>Vicepresidencia Comercial / Auditoría</li>
+                <li>Gerencia Legal / Dirección de Licenciamiento y Acreditación</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="modal-action-close-btn" onclick="closeModal('partnerModal')">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. MODAL: Plataformas Virtuales -->
+  <div class="modal-overlay" id="platformsModal">
+    <div class="modal-box modal-lg">
+      <div class="modal-header">
+        <h2 class="modal-title"><i class="fas fa-laptop-code"></i> Plataformas Virtuales</h2>
+        <button class="modal-close-icon-btn" onclick="closeModal('platformsModal')"><i class="fas fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-desc">
+          Como colaborador USIL, tendrás acceso a diversas plataformas para tu desarrollo y autogestión:
+        </p>
+
+        <!-- Adryan -->
+        <div class="platform-item">
+          <div class="platform-logo-wrap">
+            <img src="platform_adryan.png" alt="Adryan" class="platform-logo" />
+          </div>
+          <div class="platform-content">
+            <h3 class="platform-name">
+              Adryan 
+              <a href="https://adryancloudusil.sapia.com.pe/" target="_blank" class="platform-btn">Acceder <i class="fas fa-up-right-from-square"></i></a>
+            </h3>
+            <p class="platform-desc">Aquí podrás realizar tu autogestión de manera ágil y digital:</p>
+            <ul class="platform-features">
+              <li><i class="fas fa-user-pen"></i> Actualizar tu información personal.</li>
+              <li><i class="fas fa-file-waveform"></i> Subir tus descansos médicos.</li>
+              <li><i class="fas fa-user-clock"></i> Marcar asistencia y horarios.</li>
+              <li><i class="fas fa-umbrella-beach"></i> Registrar y solicitar tus vacaciones.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Engage -->
+        <div class="platform-item">
+          <div class="platform-logo-wrap">
+            <img src="platform_engage.png" alt="Viva Engage" class="platform-logo" />
+          </div>
+          <div class="platform-content">
+            <h3 class="platform-name">
+              Viva Engage 
+              <a href="https://engage.cloud.microsoft/main/feed" target="_blank" class="platform-btn">Acceder <i class="fas fa-up-right-from-square"></i></a>
+            </h3>
+            <p class="platform-desc">Nuestra red social y comunidad interna. Conéctate con otros colaboradores, mantente al día con los comunicados oficiales, eventos, cumpleaños y entérate de los convenios y beneficios.</p>
+          </div>
+        </div>
+
+        <!-- Academia USIL -->
+        <div class="platform-item">
+          <div class="platform-logo-wrap">
+            <img src="platform_academia.png" alt="Academia USIL" class="platform-logo" />
+          </div>
+          <div class="platform-content">
+            <h3 class="platform-name">
+              Academia USIL 
+              <a href="https://academia.usil.pe/login/index.php" target="_blank" class="platform-btn">Acceder <i class="fas fa-up-right-from-square"></i></a>
+            </h3>
+            <p class="platform-desc">
+              Plataforma de capacitación e inducción institucional.
+              <br><strong>Acceso:</strong> Usa tu DNI como usuario y contraseña (si es tu primer acceso).
+              <br><span style="color:#b91c1c; font-weight: 600;"><i class="fas fa-triangle-exclamation"></i> ¡Importante!</span> El plazo máximo para completar tus cursos obligatorios de inducción es de <strong>10 días calendario</strong> desde tu fecha de ingreso.
+            </p>
+          </div>
+        </div>
+
+        <!-- Contactos Extra -->
+        <div class="platform-contacts">
+          <div class="contact-box">
+            <h4><i class="fas fa-graduation-cap"></i> ¿Dudas sobre Academia USIL?</h4>
+            <p>Escribe a Caroline Saravia: <a href="mailto:csaravia@usil.edu.pe">csaravia@usil.edu.pe</a></p>
+          </div>
+          <div class="contact-box">
+            <h4><i class="fas fa-award"></i> ¿Consultas sobre beneficios educativos?</h4>
+            <p>Escribe a Becas: <a href="mailto:becas.educacion@usil.edu.pe">becas.educacion@usil.edu.pe</a></p>
+          </div>
+        </div>
+
+        <div style="margin-top:20px; border-radius:12px; overflow:hidden; border: 1px solid #e2e8f0;">
+          <img src="platform_banner.png" alt="Banner Informativo Plataformas" style="width:100%; display:block;" />
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="modal-action-close-btn" onclick="closeModal('platformsModal')">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. MODAL: Estacionamiento -->
+  <div class="modal-overlay" id="parkingModal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h2 class="modal-title"><i class="fas fa-square-parking"></i> Solicitud de Estacionamiento</h2>
+        <button class="modal-close-icon-btn" onclick="closeModal('parkingModal')"><i class="fas fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-desc">
+          Para solicitar acceso a estacionamiento vehicular corporativo en las sedes de trabajo, debes iniciar el trámite formal enviando la documentación requerida por correo electrónico.
+        </p>
+
+        <div class="parking-section">
+          <h3><i class="fas fa-clipboard-list"></i> Requisitos Obligatorios</h3>
+          <p>Envía los siguientes documentos escaneados/guardados en formato <strong>PDF</strong>:</p>
+          <ul class="parking-reqs">
+            <li>
+              <span class="req-title">Formato de Inscripción Vehicular</span>
+              <a href="#" class="btn-download-form"><i class="fas fa-file-arrow-down"></i> Descargar Formato</a>
+            </li>
+            <li>Copia de Brevete / Licencia de conducir (Vigente).</li>
+            <li>Copia de póliza SOAT (Vigente).</li>
+            <li>Copia de Tarjeta de Propiedad Vehicular (ambas caras en una sola hoja, no se acepta consulta SUNARP).</li>
+            <li>Copia de Revisión Técnica vehicular (si aplica por el año del auto).</li>
+          </ul>
+        </div>
+
+        <div class="parking-section">
+          <h3><i class="fas fa-envelope-open-text"></i> Envío de Correo</h3>
+          <p><strong>Asunto del correo:</strong> <code style="background: #e2e8f0; padding: 2px 6px; border-radius: 4px; font-weight:600;">Estacionamiento - Nuevo Colaborador USIL</code></p>
+          <p><strong>Enviar copia obligatoria a:</strong></p>
+          <ul style="list-style:none; padding-left:0; font-size:13px; margin: 6px 0 12px 0;">
+            <li><i class="fas fa-envelope"></i> <a href="mailto:helpsecurity@usil.edu.pe">helpsecurity@usil.edu.pe</a></li>
+            <li><i class="fas fa-envelope"></i> <a href="mailto:ssedes@usil.edu.pe">ssedes@usil.edu.pe</a></li>
+          </ul>
+
+          <p><strong>Y según tu sede de trabajo principal:</strong></p>
+          <div class="sede-emails">
+            <div class="sede-item">
+              <strong>Campus 1 (Grau):</strong>
+              <br><a href="mailto:seguridadjgrupoc1@usil.edu.pe">seguridadjgrupoc1@usil.edu.pe</a>
+              <br><a href="mailto:recepcionc1@usil.edu.pe">recepcionc1@usil.edu.pe</a>
+            </div>
+            <div class="sede-item" style="margin-top:10px;">
+              <strong>Campus 2 (La Fontana):</strong>
+              <br><a href="mailto:seguridadjgrupoc2@usil.edu.pe">seguridadjgrupoc2@usil.edu.pe</a>
+              <br><a href="mailto:recepcionc2@usil.edu.pe">recepcionc2@usil.edu.pe</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="modal-action-close-btn" onclick="closeModal('parkingModal')">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. MODAL: Nuestros Campus -->
+  <div class="modal-overlay" id="campusModal">
+    <div class="modal-box modal-lg">
+      <div class="modal-header">
+        <h2 class="modal-title"><i class="fas fa-map-location-dot"></i> Nuestros Campus</h2>
+        <button class="modal-close-icon-btn" onclick="closeModal('campusModal')"><i class="fas fa-xmark"></i></button>
+      </div>
+      <div class="modal-body" style="padding:0;">
+        <div class="tabs-header">
+          <button class="tab-btn active" onclick="switchTab(event, 'tab-campus1')">Campus 1</button>
+          <button class="tab-btn" onclick="switchTab(event, 'tab-campus2')">Campus 2</button>
+        </div>
+
+        <div class="tab-content active" id="tab-campus1" style="padding:20px;">
+          <h3 style="color:#002b5e; font-family:'Oswald', sans-serif; margin-bottom:8px;">Campus Gran Almirante Miguel Grau (Campus 1)</h3>
+          <p style="font-size:13px; color:#475569; margin-bottom:15px;"><i class="fas fa-location-dot"></i> Av. Gran Almirante Miguel Grau 369, La Molina, Lima.</p>
+          
+          <div class="campus-info-layout">
+            <a href="https://www.google.com/maps/search/?api=1&query=USIL+Campus+Gran+Almirante+Miguel+Grau+La+Molina" target="_blank" class="map-link-wrapper">
+              <div class="campus-map-wrap">
+                <img src="campus_map_1.png" alt="Mapa Campus 1" class="campus-map-img" />
+                <div class="map-overlay-hint">
+                  <i class="fas fa-map-marked-alt"></i> Ver en Google Maps
+                </div>
+              </div>
+            </a>
+            <div class="campus-qr-box">
+              <img src="campus_location_qr.png" alt="QR Campus 1" class="campus-qr-img" />
+              <span>Escanea para Google Maps</span>
+            </div>
+          </div>
+
+          <div class="campus-details-box" style="margin-top:15px; background:#f1f5f9; padding:12px; border-radius:10px;">
+            <p style="font-size:12px; line-height:1.5; color:#334155;">
+              <strong>Tópico de Salud:</strong> Lunes a Sábado de 07:00 a 23:00 horas.
+              <br><strong>Lactario:</strong> Ubicado al costado de la entrada de Pabellón B.
+            </p>
+          </div>
+        </div>
+
+        <div class="tab-content" id="tab-campus2" style="padding:20px;">
+          <h3 style="color:#002b5e; font-family:'Oswald', sans-serif; margin-bottom:8px;">Campus Fernando Belaunde Terry (Campus 2)</h3>
+          <p style="font-size:13px; color:#475569; margin-bottom:15px;"><i class="fas fa-location-dot"></i> Av. La Fontana 550, La Molina, Lima.</p>
+          
+          <div class="campus-info-layout">
+            <a href="https://www.google.com/maps/search/?api=1&query=USIL+Campus+Fernando+Belaunde+Terry+La+Fontana+La+Molina" target="_blank" class="map-link-wrapper">
+              <div class="campus-map-wrap">
+                <img src="campus_map_2.png" alt="Mapa Campus 2" class="campus-map-img" />
+                <div class="map-overlay-hint">
+                  <i class="fas fa-map-marked-alt"></i> Ver en Google Maps
+                </div>
+              </div>
+            </a>
+            <div class="campus-qr-box">
+              <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DUSIL%2BCampus%2BFernando%2BBelaunde%2BTerry%2BLa%2BFontana%2BLa%2BMolina" alt="QR Campus 2" class="campus-qr-img" />
+              <span>Escanea para Google Maps</span>
+            </div>
+          </div>
+
+          <div class="campus-details-box" style="margin-top:15px; background:#f1f5f9; padding:12px; border-radius:10px;">
+            <p style="font-size:12px; line-height:1.5; color:#334155;">
+              <strong>Tópico de Salud:</strong> Lunes a Sábado de 07:00 a 23:00 horas, Domingos de 8:00 a 18:00 horas (solo durante periodo de clases regulares).
+              <br><strong>Lactario:</strong> Ubicado al costado del comedor de colaboradores USIL.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="modal-action-close-btn" onclick="closeModal('campusModal')">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. MODAL: Principales Contactos -->
+  <div class="modal-overlay" id="contactsModal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h2 class="modal-title"><i class="fas fa-address-book"></i> Principales Contactos</h2>
+        <button class="modal-close-icon-btn" onclick="closeModal('contactsModal')"><i class="fas fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-desc">
+          Ante cualquier duda específica de pagos, trámites, seguros o documentos oficiales, ponte en contacto con los responsables correspondientes:
+        </p>
+
+        <!-- Remuneraciones -->
+        <div class="contact-section">
+          <h3><i class="fas fa-hand-holding-dollar"></i> Remuneraciones</h3>
+          <div class="contact-person">
+            <div class="person-info">
+              <strong>Santiago Osorio</strong>
+              <span class="person-role">Certificado de 5ta Categoría, Consultas de Pagos</span>
+            </div>
+            <a href="mailto:sosorio@usil.edu.pe" class="mail-icon-link"><i class="fas fa-envelope"></i> sosorio@usil.edu.pe</a>
+          </div>
+          <div class="contact-person">
+            <div class="person-info">
+              <strong>Frank Candelario</strong>
+              <span class="person-role">Certificados de Pagos, Consultas de Depósitos</span>
+            </div>
+            <a href="mailto:fcandelario@usil.edu.pe" class="mail-icon-link"><i class="fas fa-envelope"></i> fcandelario@usil.edu.pe</a>
+          </div>
+          <div class="contact-person">
+            <div class="person-info">
+              <strong>Marisol Simeon</strong>
+              <span class="person-role">Consultas generales de Pagos y Boletas</span>
+            </div>
+            <a href="mailto:msimeon@usil.edu.pe" class="mail-icon-link"><i class="fas fa-envelope"></i> msimeon@usil.edu.pe</a>
+          </div>
+        </div>
+
+        <!-- Administración de Personal -->
+        <div class="contact-section">
+          <h3><i class="fas fa-id-card-clip"></i> Administración de Personal</h3>
+          <div class="contact-person">
+            <div class="person-info">
+              <strong>Renzo Vega</strong>
+              <span class="person-role">Constancias de Trabajo, Fotocheck, Seguro Vida Ley</span>
+            </div>
+            <a href="mailto:rvegaa@usil.edu.pe" class="mail-icon-link"><i class="fas fa-envelope"></i> rvegaa@usil.edu.pe</a>
+          </div>
+          <div class="contact-person">
+            <div class="person-info">
+              <strong>Leydy Nuñez</strong>
+              <span class="person-role">Consultas de registro y acceso a Adryan</span>
+            </div>
+            <a href="mailto:lnunezs@usil.edu.pe" class="mail-icon-link"><i class="fas fa-envelope"></i> lnunezs@usil.edu.pe</a>
+          </div>
+          <div class="contact-person">
+            <div class="person-info">
+              <strong>Angie Melendez</strong>
+              <span class="person-role">Apertura y Cambio de Cuenta de Haberes / CTS</span>
+            </div>
+            <a href="mailto:amelendez@usil.edu.pe" class="mail-icon-link"><i class="fas fa-envelope"></i> amelendez@usil.edu.pe</a>
+          </div>
+          <div class="contact-person">
+            <div class="person-info">
+              <strong>Lidia Gonzales</strong>
+              <span class="person-role">Trámites documentarios de contratación</span>
+            </div>
+            <a href="mailto:lgonzalesar@usil.edu.pe" class="mail-icon-link"><i class="fas fa-envelope"></i> lgonzalesar@usil.edu.pe</a>
+          </div>
+        </div>
+
+        <!-- Bienestar Social -->
+        <div class="contact-section">
+          <h3><i class="fas fa-handshake-angle"></i> Bienestar Social</h3>
+          <p style="font-size:12px; color:#475569; margin-bottom:10px;">Consultas sobre: EPS, Seguro Oncológico, Licencias médicas, Asistencia Social y Solicitud de Préstamos.</p>
+          <div class="contact-person">
+            <div class="person-info">
+              <strong>Área de Bienestar</strong>
+            </div>
+            <a href="mailto:bienestarsocial@usil.edu.pe" class="mail-icon-link"><i class="fas fa-envelope"></i> bienestarsocial@usil.edu.pe</a>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="modal-action-close-btn" onclick="closeModal('contactsModal')">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. MODAL: USIL SOS (Línea de emergencia) -->
+  <div class="modal-overlay" id="sosModal">
+    <div class="modal-box">
+      <div class="modal-header" style="background:#fee2e2; border-bottom:1px solid #fecaca;">
+        <h2 class="modal-title" style="color:#dc2626;"><i class="fas fa-triangle-exclamation"></i> Línea de Emergencia SOS</h2>
+        <button class="modal-close-icon-btn" onclick="closeModal('sosModal')" style="color:#dc2626; background:#fca5a5;"><i class="fas fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <div class="sos-dashboard">
+          <div class="sos-number-card">
+            <div class="sos-label">COMUNÍCATE AL NÚMERO</div>
+            <a href="tel:905441001" class="sos-number">
+              <i class="fas fa-phone-volume"></i> 905 441 001
+            </a>
+            <p style="font-size:12px; color:#ef4444; font-weight:600; margin-bottom:16px;">Disponible para emergencias en campus y sedes de la corporación.</p>
+            <a href="tel:905441001" class="sos-call-btn">
+              <i class="fas fa-phone"></i> Llamar Ahora
+            </a>
+          </div>
+
+          <!-- Tópicos -->
+          <div class="sos-info-block">
+            <h4><i class="fas fa-stethoscope"></i> Horarios de Tópicos</h4>
+            <ul>
+              <li>
+                <strong>Campus 1 (Grau):</strong>
+                <br>Lunes a Sábado de 07:00 a 23:00 horas.
+              </li>
+              <li>
+                <strong>Campus 2 (La Fontana):</strong>
+                <br>Lunes a Sábado de 07:00 a 23:00 horas.
+                <br>Domingos de 8:00 a 18:00 horas (solo periodo de clases regulares).
+              </li>
+            </ul>
+          </div>
+
+          <!-- Lactarios -->
+          <div class="sos-info-block" style="margin-top:16px;">
+            <h4><i class="fas fa-baby"></i> Lactarios en Campus</h4>
+            <ul>
+              <li>
+                <strong>Campus 1:</strong>
+                <br>Al costado de la entrada de Pabellón B.
+              </li>
+              <li>
+                <strong>Campus 2:</strong>
+                <br>Al costado del comedor de colaboradores USIL.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="modal-action-close-btn" onclick="closeModal('sosModal')">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 7. MODAL: Share -->
+  <div class="modal-overlay" id="shareModal">
+    <div class="modal-box share-modal-box">
+      <div class="share-modal-header">
+        <h2 class="share-modal-title">Compartir portal</h2>
+        <button class="share-close-btn" onclick="closeModal('shareModal')">
+          <i class="fas fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- Preview Card -->
+      <div class="share-preview-card">
+        <div class="share-avatar-circle">
+          <img src="usil_logo.png" alt="USIL Logo" class="share-avatar-img" />
+        </div>
+        <h3 class="share-card-title">TOOLKIT DE BIENVENIDA</h3>
+        <p class="share-card-subtitle">Corporación Educativa USIL</p>
+      </div>
+
+      <!-- Sharing Grid / Row -->
+      <div class="share-options-container">
+        <div class="share-options-scroll">
+          
+          <!-- Copy Link -->
+          <button class="share-option-btn" id="copyLinkBtn">
+            <div class="share-icon-circle copy-btn-bg">
+              <i class="fas fa-link"></i>
+            </div>
+            <span class="share-option-label">Copiar</span>
+          </button>
+
+          <!-- X (Twitter) -->
+          <button class="share-option-btn" onclick="shareX()">
+            <div class="share-icon-circle x-btn-bg">
+              <i class="fab fa-x-twitter"></i>
+            </div>
+            <span class="share-option-label">X</span>
+          </button>
+
+          <!-- Facebook -->
+          <button class="share-option-btn" onclick="shareFacebook()">
+            <div class="share-icon-circle fb-btn-bg">
+              <i class="fab fa-facebook-f"></i>
+            </div>
+            <span class="share-option-label">Facebook</span>
+          </button>
+
+          <!-- WhatsApp -->
+          <button class="share-option-btn" onclick="shareWhatsApp()">
+            <div class="share-icon-circle wa-btn-bg">
+              <i class="fab fa-whatsapp"></i>
+            </div>
+            <span class="share-option-label">WhatsApp</span>
+          </button>
+
+          <!-- LinkedIn -->
+          <button class="share-option-btn" onclick="shareLinkedIn()">
+            <div class="share-icon-circle ln-btn-bg">
+              <i class="fab fa-linkedin-in"></i>
+            </div>
+            <span class="share-option-label">LinkedIn</span>
+          </button>
+
+          <!-- Correo -->
+          <button class="share-option-btn" onclick="shareEmail()">
+            <div class="share-icon-circle mail-btn-bg">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <span class="share-option-label">Correo</span>
+          </button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast" style="position:fixed; bottom:40px; left:50%; transform:translateX(-50%); background:#333; color:#fff; padding:10px 24px; border-radius:24px; font-size:14px; display:none; z-index:9999;">
+    ¡Enlace copiado!
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
