@@ -69,6 +69,21 @@ body {
     right: 40px;
   }
   
+  .desktop-qr-img {
+    width: 100px;
+    height: 100px;
+    background: #ffffff;
+    padding: 6px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    object-fit: contain;
+    border: 1px solid #e2e8f0;
+    transition: transform 0.2s;
+  }
+  .desktop-qr-img:hover {
+    transform: scale(1.05);
+  }
+  
   .qr-text {
     font-size: 13px;
     font-weight: 700;
