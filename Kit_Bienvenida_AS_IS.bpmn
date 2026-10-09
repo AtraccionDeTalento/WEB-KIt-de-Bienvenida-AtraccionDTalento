@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" id="Definitions_KitBienvenidaAsIs" targetNamespace="http://bpmn.io/schema/bpmn" exporter="bpmn-js (https://demo.bpmn.io)" exporterVersion="18.28.0">
+  <bpmn:collaboration id="Collaboration_1">
+    <bpmn:participant id="Participant_asis" name="Kit de Bienvenida - AS IS (proceso actual con PDF por correo)" processRef="Process_asis" />
+
+    <bpmn:textAnnotation id="ann_pdf">
+      <bpmn:text>El PDF es estatico: no tiene buscador, pesa varios MB y se visualiza mal en celular. Cada vez que cambia un dato (Socio de Negocio, contactos, etc.) hay que reeditar y reenviar el PDF a todos.</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="assoc_pdf" sourceRef="a_t2" targetRef="ann_pdf" />
+
+    <bpmn:textAnnotation id="ann_busqueda">
+      <bpmn:text>El colaborador debe pasar pagina por pagina buscando su area, su sede o el contacto correcto. No hay enlaces directos ni accesos a plataformas.</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="assoc_busqueda" sourceRef="a_t3" targetRef="ann_busqueda" />
+
+    <bpmn:textAnnotation id="ann_estacionamiento">
+      <bpmn:text>Debe ubicar el formato Word dentro del PDF, descargarlo, llenarlo a mano y enviarlo por correo a varios destinatarios segun su sede.</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="assoc_estacionamiento" sourceRef="a_t6" targetRef="ann_estacionamiento" />
+
+    <bpmn:textAnnotation id="ann_cuello">
+      <bpmn:text>Cuello de botella: Talento y Cultura responde manualmente cada consulta repetida, revisando el mismo PDF una y otra vez.</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="assoc_cuello" sourceRef="a_t5" targetRef="ann_cuello" />
+  </bpmn:collaboration>
+
+  <bpmn:process id="Process_asis" name="AS IS" isExecutable="false">
+    <bpmn:laneSet id="LaneSet_1">
+      <bpmn:lane id="Lane_tyc" name="Atraccion de Talento / Talento y Cultura">
+        <bpmn:flowNodeRef>a_start</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>a_t1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>a_t5</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_colaborador" name="Nuevo Colaborador">
+        <bpmn:flowNodeRef>a_t2</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>a_t3</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>a_gw_encuentra</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>a_t4</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>a_gw_necesita</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>a_t6</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>a_t7</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>a_end</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_soporte" name="Areas de Soporte (Seguridad / Socio de Negocio / Contactos)">
+        <bpmn:flowNodeRef>a_t8</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+
+    <bpmn:startEvent id="a_start" name="Nuevo ingreso" />
+    <bpmn:task id="a_t1" name="Talento y Cultura envia el PDF 'Tool Kit de Bienvenida' por correo" />
+    <bpmn:task id="a_t2" name="Colaborador recibe el correo y abre el PDF adjunto" bioc:stroke="#a23b2e" bioc:fill="#f6d8d3" />
+    <bpmn:task id="a_t3" name="Navega manualmente pagina por pagina buscando su informacion" bioc:stroke="#a23b2e" bioc:fill="#f6d8d3" />
+    <bpmn:exclusiveGateway id="a_gw_encuentra" name="Encuentra la informacion?" />
+    <bpmn:task id="a_t5" name="Talento y Cultura responde la consulta revisando el PDF" bioc:stroke="#a23b2e" bioc:fill="#f6d8d3" />
+    <bpmn:task id="a_t4" name="Escribe correo a Talento y Cultura con su duda" />
+    <bpmn:exclusiveGateway id="a_gw_necesita" name="Que necesita?" />
+    <bpmn:task id="a_t6" name="Descarga el Formato Vehicular del PDF, lo llena y lo envia por correo" bioc:stroke="#a23b2e" bioc:fill="#f6d8d3" />
+    <bpmn:task id="a_t7" name="Ubica el contacto o Socio de Negocio de Talento y Cultura correcto en el PDF y escribe un correo" />
+    <bpmn:task id="a_t8" name="El area responde y gestiona el tramite manualmente (dias de respuesta)" />
+    <bpmn:endEvent id="a_end" name="Consulta resuelta (proceso lento y fragmentado)" />
+
+    <bpmn:sequenceFlow id="a_sf1" sourceRef="a_start" targetRef="a_t1" />
+    <bpmn:sequenceFlow id="a_sf2" sourceRef="a_t1" targetRef="a_t2" />
+    <bpmn:sequenceFlow id="a_sf3" sourceRef="a_t2" targetRef="a_t3" />
+    <bpmn:sequenceFlow id="a_sf4" sourceRef="a_t3" targetRef="a_gw_encuentra" />
+    <bpmn:sequenceFlow id="a_sf5" name="No" sourceRef="a_gw_encuentra" targetRef="a_t4" />
+    <bpmn:sequenceFlow id="a_sf6" sourceRef="a_t4" targetRef="a_t5" />
+    <bpmn:sequenceFlow id="a_sf7" sourceRef="a_t5" targetRef="a_gw_necesita" />
+    <bpmn:sequenceFlow id="a_sf8" name="Si" sourceRef="a_gw_encuentra" targetRef="a_gw_necesita" />
+    <bpmn:sequenceFlow id="a_sf9" name="Estacionamiento" sourceRef="a_gw_necesita" targetRef="a_t6" />
+    <bpmn:sequenceFlow id="a_sf10" name="Contacto / Socio de Negocio" sourceRef="a_gw_necesita" targetRef="a_t7" />
+    <bpmn:sequenceFlow id="a_sf11" sourceRef="a_t6" targetRef="a_t8" />
+    <bpmn:sequenceFlow id="a_sf12" sourceRef="a_t7" targetRef="a_t8" />
+    <bpmn:sequenceFlow id="a_sf13" sourceRef="a_t8" targetRef="a_end" />
+  </bpmn:process>
+
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1">
+      <bpmndi:BPMNShape id="Participant_asis_di" bpmnElement="Participant_asis" isHorizontal="true">
+        <dc:Bounds x="160" y="80" width="2450" height="620" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_tyc_di" bpmnElement="Lane_tyc" isHorizontal="true">
+        <dc:Bounds x="190" y="80" width="2420" height="180" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_colaborador_di" bpmnElement="Lane_colaborador" isHorizontal="true">
+        <dc:Bounds x="190" y="260" width="2420" height="300" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_soporte_di" bpmnElement="Lane_soporte" isHorizontal="true">
+        <dc:Bounds x="190" y="560" width="2420" height="140" />
+      </bpmndi:BPMNShape>
+
+      <bpmndi:BPMNShape id="a_start_di" bpmnElement="a_start">
+        <dc:Bounds x="240" y="152" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="222" y="192" width="72" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="a_t1_di" bpmnElement="a_t1">
+        <dc:Bounds x="330" y="130" width="240" height="80" />
+      </bpmndi:BPMNShape>
+
+      <bpmndi:BPMNShape id="a_t2_di" bpmnElement="a_t2" bioc:stroke="#a23b2e" bioc:fill="#f6d8d3">
+        <dc:Bounds x="330" y="380" width="240" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="a_t3_di" bpmnElement="a_t3" bioc:stroke="#a23b2e" bioc:fill="#f6d8d3">
+        <dc:Bounds x="630" y="380" width="240" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="a_gw_encuentra_di" bpmnElement="a_gw_encuentra" isMarkerVisible="true">
+        <dc:Bounds x="930" y="395" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="905" y="450" width="100" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="a_t4_di" bpmnElement="a_t4">
+        <dc:Bounds x="1030" y="270" width="220" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="a_t5_di" bpmnElement="a_t5" bioc:stroke="#a23b2e" bioc:fill="#f6d8d3">
+        <dc:Bounds x="1030" y="100" width="240" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="a_gw_necesita_di" bpmnElement="a_gw_necesita" isMarkerVisible="true">
+        <dc:Bounds x="1360" y="395" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1350" y="450" width="70" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="a_t6_di" bpmnElement="a_t6" bioc:stroke="#a23b2e" bioc:fill="#f6d8d3">
+        <dc:Bounds x="1470" y="380" width="260" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="a_t7_di" bpmnElement="a_t7">
+        <dc:Bounds x="1470" y="490" width="260" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="a_end_di" bpmnElement="a_end">
+        <dc:Bounds x="2360" y="402" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2320" y="442" width="115" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+
+      <bpmndi:BPMNShape id="a_t8_di" bpmnElement="a_t8">
+        <dc:Bounds x="1900" y="600" width="280" height="80" />
+      </bpmndi:BPMNShape>
+
+      <bpmndi:BPMNShape id="ann_pdf_di" bpmnElement="ann_pdf">
+        <dc:Bounds x="330" y="490" width="260" height="90" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="assoc_pdf_di" bpmnElement="assoc_pdf">
+        <di:waypoint x="440" y="460" />
+        <di:waypoint x="440" y="490" />
+      </bpmndi:BPMNEdge>
+
+      <bpmndi:BPMNShape id="ann_busqueda_di" bpmnElement="ann_busqueda">
+        <dc:Bounds x="630" y="500" width="260" height="90" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="assoc_busqueda_di" bpmnElement="assoc_busqueda">
+        <di:waypoint x="750" y="460" />
+        <di:waypoint x="750" y="500" />
+      </bpmndi:BPMNEdge>
+
+      <bpmndi:BPMNShape id="ann_estacionamiento_di" bpmnElement="ann_estacionamiento">
+        <dc:Bounds x="1470" y="270" width="260" height="90" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="assoc_estacionamiento_di" bpmnElement="assoc_estacionamiento">
+        <di:waypoint x="1600" y="380" />
+        <di:waypoint x="1600" y="360" />
+      </bpmndi:BPMNEdge>
+
+      <bpmndi:BPMNShape id="ann_cuello_di" bpmnElement="ann_cuello">
+        <dc:Bounds x="1030" y="0" width="280" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="assoc_cuello_di" bpmnElement="assoc_cuello">
+        <di:waypoint x="1150" y="100" />
+        <di:waypoint x="1150" y="80" />
+      </bpmndi:BPMNEdge>
+
+      <bpmndi:BPMNEdge id="a_sf1_di" bpmnElement="a_sf1">
+        <di:waypoint x="276" y="170" />
+        <di:waypoint x="330" y="170" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="a_sf2_di" bpmnElement="a_sf2">
+        <di:waypoint x="450" y="210" />
+        <di:waypoint x="450" y="380" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="a_sf3_di" bpmnElement="a_sf3">
+        <di:waypoint x="570" y="420" />
+        <di:waypoint x="630" y="420" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="a_sf4_di" bpmnElement="a_sf4">
+        <di:waypoint x="870" y="420" />
+        <di:waypoint x="930" y="420" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="a_sf5_di" bpmnElement="a_sf5">
+        <di:waypoint x="955" y="395" />
+        <di:waypoint x="955" y="310" />
+        <di:waypoint x="1030" y="310" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="960" y="350" width="17" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="a_sf6_di" bpmnElement="a_sf6">
+        <di:waypoint x="1140" y="270" />
+        <di:waypoint x="1140" y="180" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="a_sf7_di" bpmnElement="a_sf7">
+        <di:waypoint x="1150" y="180" />
+        <di:waypoint x="1385" y="180" />
+        <di:waypoint x="1385" y="395" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="a_sf8_di" bpmnElement="a_sf8">
+        <di:waypoint x="980" y="420" />
+        <di:waypoint x="1360" y="420" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1160" y="402" width="14" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="a_sf9_di" bpmnElement="a_sf9">
+        <di:waypoint x="1410" y="420" />
+        <di:waypoint x="1470" y="420" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1415" y="402" width="65" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="a_sf10_di" bpmnElement="a_sf10">
+        <di:waypoint x="1385" y="445" />
+        <di:waypoint x="1385" y="530" />
+        <di:waypoint x="1470" y="530" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1390" y="480" width="55" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="a_sf11_di" bpmnElement="a_sf11">
+        <di:waypoint x="1730" y="460" />
+        <di:waypoint x="1730" y="530" />
+        <di:waypoint x="2040" y="530" />
+        <di:waypoint x="2040" y="600" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="a_sf12_di" bpmnElement="a_sf12">
+        <di:waypoint x="1730" y="570" />
+        <di:waypoint x="1900" y="620" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="a_sf13_di" bpmnElement="a_sf13">
+        <di:waypoint x="2180" y="640" />
+        <di:waypoint x="2378" y="640" />
+        <di:waypoint x="2378" y="438" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

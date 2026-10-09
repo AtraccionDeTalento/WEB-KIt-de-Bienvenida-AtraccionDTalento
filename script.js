@@ -151,7 +151,7 @@ function showContextMenu(e, card) {
 
   const menu = document.createElement('div');
   menu.style.cssText = `
-    position: fixed; background: #fff; border-radius: 12px;
+    position: absolute; background: #fff; border-radius: 12px;
     box-shadow: 0 8px 30px rgba(0, 43, 94, 0.15); z-index: 500;
     min-width: 170px; overflow: hidden; border: 1px solid #e2e8f0;
   `;
@@ -169,7 +169,7 @@ function showContextMenu(e, card) {
 
   const rect = e.currentTarget.getBoundingClientRect();
   menu.style.top = (rect.bottom + window.scrollY + 6) + 'px';
-  menu.style.left = (rect.right - 170) + 'px';
+  menu.style.left = (rect.right + window.scrollX - 170) + 'px';
 
   // Añadir eventos a los botones del menú
   menu.querySelectorAll('.ctx-item').forEach(item => {

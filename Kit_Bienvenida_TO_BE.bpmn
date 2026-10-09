@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" id="Definitions_KitBienvenidaToBe" targetNamespace="http://bpmn.io/schema/bpmn" exporter="bpmn-js (https://demo.bpmn.io)" exporterVersion="18.28.0">
+  <bpmn:collaboration id="Collaboration_1">
+    <bpmn:participant id="Participant_tobe" name="Kit de Bienvenida - TO BE (portal web interactivo)" processRef="Process_tobe" />
+
+    <bpmn:textAnnotation id="ann_portal">
+      <bpmn:text>Portal tipo linktree, mobile-first. Talento y Cultura actualiza el contenido (Socios de Negocio, contactos, plataformas) directamente en la web: un solo lugar, siempre vigente, sin reenviar archivos.</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="assoc_portal" sourceRef="t_t1" targetRef="ann_portal" />
+
+    <bpmn:textAnnotation id="ann_tarjetas">
+      <bpmn:text>6 tarjetas de acceso directo: Socio de Negocio de Talento y Cultura, Plataformas Virtuales, Estacionamiento, Nuestros Campus, Principales Contactos y USIL SOS.</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="assoc_tarjetas" sourceRef="t_t3" targetRef="ann_tarjetas" />
+
+    <bpmn:textAnnotation id="ann_autoservicio">
+      <bpmn:text>Cada modal resuelve la duda al instante: Socio de Negocio segun su area con correo directo, botones de acceso a plataformas, formulario descargable, mapa y QR de campus, telefono/correo de contacto directo.</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="assoc_autoservicio" sourceRef="t_t4" targetRef="ann_autoservicio" />
+
+    <bpmn:textAnnotation id="ann_tramite">
+      <bpmn:text>El formato y los correos de destino ya estan listos en el portal: el colaborador solo descarga, llena y envia, sin buscar en ningun documento.</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="assoc_tramite" sourceRef="t_t6" targetRef="ann_tramite" />
+
+    <bpmn:textAnnotation id="ann_beneficio">
+      <bpmn:text>Beneficio: se elimina el ida y vuelta de correos con Talento y Cultura para dudas basicas; la informacion se resuelve en segundos desde el celular.</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="assoc_beneficio" sourceRef="t_end" targetRef="ann_beneficio" />
+  </bpmn:collaboration>
+
+  <bpmn:process id="Process_tobe" name="TO BE" isExecutable="false">
+    <bpmn:laneSet id="LaneSet_1">
+      <bpmn:lane id="Lane_tyc" name="Atraccion de Talento / Talento y Cultura">
+        <bpmn:flowNodeRef>t_start</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>t_t1</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_colaborador" name="Nuevo Colaborador">
+        <bpmn:flowNodeRef>t_t2</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>t_t3</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>t_gw_categoria</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>t_t4</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>t_gw_tramite</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>t_t5</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>t_t6</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>t_t7</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>t_end</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_sistema" name="Portal Web (automatico)">
+        <bpmn:flowNodeRef>t_t8</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+
+    <bpmn:startEvent id="t_start" name="Nuevo ingreso" />
+    <bpmn:task id="t_t1" name="Talento y Cultura comparte el link / QR del portal web" bioc:stroke="#2e7d5b" bioc:fill="#d7f0e2" />
+    <bpmn:task id="t_t2" name="Colaborador escanea el QR o abre el link desde su celular" bioc:stroke="#2e7d5b" bioc:fill="#d7f0e2" />
+    <bpmn:task id="t_t3" name="Visualiza el portal interactivo con tarjetas de acceso rapido" bioc:stroke="#2e7d5b" bioc:fill="#d7f0e2" />
+    <bpmn:exclusiveGateway id="t_gw_categoria" name="Que necesita?" />
+    <bpmn:task id="t_t4" name="Toca la tarjeta correspondiente y el modal muestra la informacion al instante" bioc:stroke="#2e7d5b" bioc:fill="#d7f0e2" />
+    <bpmn:exclusiveGateway id="t_gw_tramite" name="Requiere un tramite? (ej. estacionamiento)" />
+    <bpmn:task id="t_t5" name="Usa el enlace directo (mailto / tel / acceder) para resolver su duda" />
+    <bpmn:task id="t_t6" name="Descarga el formato desde el portal, lo llena y envia el correo ya con los destinatarios indicados" />
+    <bpmn:task id="t_t7" name="Comparte el portal con un compañero via boton Compartir (opcional)" />
+    <bpmn:endEvent id="t_end" name="Necesidad resuelta al instante" />
+
+    <bpmn:task id="t_t8" name="El portal centraliza y actualiza la informacion en tiempo real (Socios de Negocio, contactos, plataformas)" />
+
+    <bpmn:sequenceFlow id="t_sf1" sourceRef="t_start" targetRef="t_t1" />
+    <bpmn:sequenceFlow id="t_sf2" sourceRef="t_t1" targetRef="t_t2" />
+    <bpmn:sequenceFlow id="t_sf3" sourceRef="t_t2" targetRef="t_t3" />
+    <bpmn:sequenceFlow id="t_sf4" sourceRef="t_t3" targetRef="t_gw_categoria" />
+    <bpmn:sequenceFlow id="t_sf5" name="Socio de Negocio / Plataformas / Campus / Contactos / SOS" sourceRef="t_gw_categoria" targetRef="t_t4" />
+    <bpmn:sequenceFlow id="t_sf6" name="Estacionamiento" sourceRef="t_gw_categoria" targetRef="t_gw_tramite" />
+    <bpmn:sequenceFlow id="t_sf7" sourceRef="t_t4" targetRef="t_gw_tramite" />
+    <bpmn:sequenceFlow id="t_sf8" name="No" sourceRef="t_gw_tramite" targetRef="t_t5" />
+    <bpmn:sequenceFlow id="t_sf9" name="Si" sourceRef="t_gw_tramite" targetRef="t_t6" />
+    <bpmn:sequenceFlow id="t_sf10" sourceRef="t_t5" targetRef="t_t7" />
+    <bpmn:sequenceFlow id="t_sf11" sourceRef="t_t6" targetRef="t_t7" />
+    <bpmn:sequenceFlow id="t_sf12" sourceRef="t_t7" targetRef="t_end" />
+    <bpmn:sequenceFlow id="t_sf13" sourceRef="t_t1" targetRef="t_t8" />
+    <bpmn:sequenceFlow id="t_sf14" sourceRef="t_t8" targetRef="t_t3" />
+  </bpmn:process>
+
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1">
+      <bpmndi:BPMNShape id="Participant_tobe_di" bpmnElement="Participant_tobe" isHorizontal="true">
+        <dc:Bounds x="160" y="80" width="2450" height="620" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_tyc_di" bpmnElement="Lane_tyc" isHorizontal="true">
+        <dc:Bounds x="190" y="80" width="2420" height="150" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_colaborador_di" bpmnElement="Lane_colaborador" isHorizontal="true">
+        <dc:Bounds x="190" y="230" width="2420" height="320" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_sistema_di" bpmnElement="Lane_sistema" isHorizontal="true">
+        <dc:Bounds x="190" y="550" width="2420" height="150" />
+      </bpmndi:BPMNShape>
+
+      <bpmndi:BPMNShape id="t_start_di" bpmnElement="t_start">
+        <dc:Bounds x="240" y="137" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="222" y="177" width="72" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="t_t1_di" bpmnElement="t_t1" bioc:stroke="#2e7d5b" bioc:fill="#d7f0e2">
+        <dc:Bounds x="330" y="115" width="240" height="80" />
+      </bpmndi:BPMNShape>
+
+      <bpmndi:BPMNShape id="t_t2_di" bpmnElement="t_t2" bioc:stroke="#2e7d5b" bioc:fill="#d7f0e2">
+        <dc:Bounds x="330" y="340" width="240" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="t_t3_di" bpmnElement="t_t3" bioc:stroke="#2e7d5b" bioc:fill="#d7f0e2">
+        <dc:Bounds x="630" y="340" width="240" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="t_gw_categoria_di" bpmnElement="t_gw_categoria" isMarkerVisible="true">
+        <dc:Bounds x="930" y="355" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="915" y="410" width="80" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="t_t4_di" bpmnElement="t_t4" bioc:stroke="#2e7d5b" bioc:fill="#d7f0e2">
+        <dc:Bounds x="1030" y="250" width="260" height="90" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="t_gw_tramite_di" bpmnElement="t_gw_tramite" isMarkerVisible="true">
+        <dc:Bounds x="1400" y="355" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1380" y="410" width="90" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="t_t5_di" bpmnElement="t_t5">
+        <dc:Bounds x="1520" y="250" width="240" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="t_t6_di" bpmnElement="t_t6">
+        <dc:Bounds x="1520" y="450" width="260" height="90" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="t_t7_di" bpmnElement="t_t7">
+        <dc:Bounds x="1900" y="340" width="240" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="t_end_di" bpmnElement="t_end">
+        <dc:Bounds x="2260" y="362" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2230" y="402" width="100" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+
+      <bpmndi:BPMNShape id="t_t8_di" bpmnElement="t_t8">
+        <dc:Bounds x="330" y="580" width="300" height="90" />
+      </bpmndi:BPMNShape>
+
+      <bpmndi:BPMNShape id="ann_portal_di" bpmnElement="ann_portal">
+        <dc:Bounds x="330" y="0" width="280" height="90" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="assoc_portal_di" bpmnElement="assoc_portal">
+        <di:waypoint x="450" y="115" />
+        <di:waypoint x="450" y="90" />
+      </bpmndi:BPMNEdge>
+
+      <bpmndi:BPMNShape id="ann_tarjetas_di" bpmnElement="ann_tarjetas">
+        <dc:Bounds x="630" y="450" width="240" height="90" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="assoc_tarjetas_di" bpmnElement="assoc_tarjetas">
+        <di:waypoint x="750" y="420" />
+        <di:waypoint x="750" y="450" />
+      </bpmndi:BPMNEdge>
+
+      <bpmndi:BPMNShape id="ann_autoservicio_di" bpmnElement="ann_autoservicio">
+        <dc:Bounds x="1030" y="100" width="280" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="assoc_autoservicio_di" bpmnElement="assoc_autoservicio">
+        <di:waypoint x="1160" y="250" />
+        <di:waypoint x="1160" y="200" />
+      </bpmndi:BPMNEdge>
+
+      <bpmndi:BPMNShape id="ann_tramite_di" bpmnElement="ann_tramite">
+        <dc:Bounds x="1820" y="450" width="260" height="90" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="assoc_tramite_di" bpmnElement="assoc_tramite">
+        <di:waypoint x="1780" y="495" />
+        <di:waypoint x="1820" y="495" />
+      </bpmndi:BPMNEdge>
+
+      <bpmndi:BPMNShape id="ann_beneficio_di" bpmnElement="ann_beneficio">
+        <dc:Bounds x="2260" y="230" width="260" height="90" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="assoc_beneficio_di" bpmnElement="assoc_beneficio">
+        <di:waypoint x="2290" y="362" />
+        <di:waypoint x="2340" y="320" />
+      </bpmndi:BPMNEdge>
+
+      <bpmndi:BPMNEdge id="t_sf1_di" bpmnElement="t_sf1">
+        <di:waypoint x="276" y="155" />
+        <di:waypoint x="330" y="155" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="t_sf2_di" bpmnElement="t_sf2">
+        <di:waypoint x="450" y="195" />
+        <di:waypoint x="450" y="340" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="t_sf3_di" bpmnElement="t_sf3">
+        <di:waypoint x="570" y="380" />
+        <di:waypoint x="630" y="380" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="t_sf4_di" bpmnElement="t_sf4">
+        <di:waypoint x="870" y="380" />
+        <di:waypoint x="930" y="380" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="t_sf5_di" bpmnElement="t_sf5">
+        <di:waypoint x="955" y="355" />
+        <di:waypoint x="955" y="295" />
+        <di:waypoint x="1030" y="295" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="960" y="240" width="150" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="t_sf6_di" bpmnElement="t_sf6">
+        <di:waypoint x="980" y="380" />
+        <di:waypoint x="1400" y="380" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1160" y="362" width="65" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="t_sf7_di" bpmnElement="t_sf7">
+        <di:waypoint x="1290" y="320" />
+        <di:waypoint x="1425" y="320" />
+        <di:waypoint x="1425" y="355" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="t_sf8_di" bpmnElement="t_sf8">
+        <di:waypoint x="1425" y="355" />
+        <di:waypoint x="1425" y="290" />
+        <di:waypoint x="1520" y="290" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1430" y="320" width="17" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="t_sf9_di" bpmnElement="t_sf9">
+        <di:waypoint x="1425" y="405" />
+        <di:waypoint x="1425" y="495" />
+        <di:waypoint x="1520" y="495" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1430" y="440" width="14" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="t_sf10_di" bpmnElement="t_sf10">
+        <di:waypoint x="1760" y="290" />
+        <di:waypoint x="2020" y="290" />
+        <di:waypoint x="2020" y="340" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="t_sf11_di" bpmnElement="t_sf11">
+        <di:waypoint x="1780" y="495" />
+        <di:waypoint x="2020" y="495" />
+        <di:waypoint x="2020" y="420" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="t_sf12_di" bpmnElement="t_sf12">
+        <di:waypoint x="2140" y="380" />
+        <di:waypoint x="2260" y="380" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="t_sf13_di" bpmnElement="t_sf13">
+        <di:waypoint x="450" y="195" />
+        <di:waypoint x="480" y="580" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="t_sf14_di" bpmnElement="t_sf14">
+        <di:waypoint x="630" y="600" />
+        <di:waypoint x="750" y="600" />
+        <di:waypoint x="750" y="420" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

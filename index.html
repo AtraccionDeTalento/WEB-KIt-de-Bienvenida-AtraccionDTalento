@@ -17,6 +17,16 @@
   <!-- Vista de Escritorio - Fondo y elementos flotantes -->
   <div class="desktop-layout">
 
+    <!-- Nubes animadas (solo escritorio) -->
+    <div class="sky" aria-hidden="true">
+      <span class="cloud" style="--s:1.3; top:8%;  --d:70s; --delay:-10s"></span>
+      <span class="cloud" style="--s:0.8; top:22%; --d:55s; --delay:-40s"></span>
+      <span class="cloud" style="--s:1.1; top:40%; --d:85s; --delay:-25s"></span>
+      <span class="cloud" style="--s:0.9; top:58%; --d:65s; --delay:-5s"></span>
+      <span class="cloud" style="--s:1.4; top:74%; --d:95s; --delay:-60s"></span>
+      <span class="cloud" style="--s:0.7; top:88%; --d:50s; --delay:-30s"></span>
+    </div>
+
     <!-- Código QR (Solo visible en escritorio) -->
     <div class="desktop-qr">
       <span class="qr-text">Escanea en tu móvil</span>
@@ -50,12 +60,12 @@
           <!-- LINKS / ACCIONES -->
           <section class="links-section">
 
-            <!-- Conoce a tu Business Partner -->
+            <!-- Conoce a tu Socio de Negocio de Talento y Cultura -->
             <div class="link-card" data-modal="partnerModal" id="btn-partner">
               <div class="link-icon-circle partner-icon">
-                <img src="assets/partner_icon.png" alt="Business Partner" class="link-icon-img" />
+                <img src="assets/partner_icon.png" alt="Socio de Negocio de Talento y Cultura" class="link-icon-img" />
               </div>
-              <span class="link-title">Conoce a tu Business Partner</span>
+              <span class="link-title">Conoce a tu Socio de Negocio de Talento y Cultura</span>
               <button class="link-menu-btn"><i class="fas fa-ellipsis-vertical"></i></button>
             </div>
 
@@ -138,37 +148,19 @@
        MODALES DETALLADOS
        ===================== -->
 
-  <!-- 1. MODAL: Conoce a tu Business Partner -->
+  <!-- 1. MODAL: Conoce a tu Socio de Negocio de Talento y Cultura -->
   <div class="modal-overlay" id="partnerModal">
     <div class="modal-box modal-lg">
       <div class="modal-header">
-        <h2 class="modal-title"><i class="fas fa-users-rectangle"></i> Conoce a tu Business Partner</h2>
+        <h2 class="modal-title"><i class="fas fa-users-rectangle"></i> Conoce a tu Socio de Negocio de Talento y Cultura</h2>
         <button class="modal-close-icon-btn" onclick="closeModal('partnerModal')"><i class="fas fa-xmark"></i></button>
       </div>
       <div class="modal-body">
         <p class="modal-desc">
-          En la <strong>Gerencia de Talento y Cultura</strong>, tu Business Partner te brindará apoyo y asesoría en tus actividades diarias y tu crecimiento en la organización. Identifica quién es tu BP según tu área:
+          En la <strong>Gerencia de Talento y Cultura</strong>, tu Socio de Negocio te brindará apoyo y asesoría en tus actividades diarias y tu crecimiento en la organización. Identifica quién es según tu área:
         </p>
 
         <div class="partners-grid">
-          <!-- Higa -->
-          <div class="partner-card">
-            <img src="assets/partner_higa.jpg" alt="Melissa Higa" class="partner-img" />
-            <h3 class="partner-name">Melissa Higa</h3>
-            <a href="mailto:mhiga@usil.edu.pe" class="partner-email"><i class="fas fa-envelope"></i> mhiga@usil.edu.pe</a>
-            <div class="partner-areas">
-              <strong>Sedes / Áreas a cargo:</strong>
-              <ul>
-                <li>Facultad de Ciencias de la Salud</li>
-                <li>Internacional / Center for Global Education</li>
-                <li>Center for Language Studies</li>
-                <li>Vicepresidencia Senior / Gerencia General</li>
-                <li>Vicepresidencia de Comunicaciones e Innovación Digital</li>
-                <li>Vicepresidencia de Tecnología de Información</li>
-              </ul>
-            </div>
-          </div>
-
           <!-- Reyes -->
           <div class="partner-card">
             <img src="assets/partner_reyes.jpg" alt="Lesley Reyes" class="partner-img" />
@@ -177,13 +169,13 @@
             <div class="partner-areas">
               <strong>Sedes / Áreas a cargo:</strong>
               <ul>
-                <li>Pregrado Ejecutivo</li>
+                <li>Dirección General de Sedes Descentralizadas</li>
+                <li>Rectorado</li>
+                <li>Gerencia de Educación Virtual y Tec. Educativa</li>
+                <li>Facultad de Ciencias Empresariales</li>
                 <li>Facultad de Adm. Hotelera, Turismo y Gastronomía</li>
                 <li>Facultad de Arquitectura, Urbanismo y Territorio</li>
-                <li>Facultad de Artes y Humanidades</li>
-                <li>Facultad de Ciencias Empresariales</li>
-                <li>Vicepresidencia de Finanzas</li>
-                <li>Gerencia de Administración y Seguridad</li>
+                <li>Gerencia Senior de Finanzas</li>
               </ul>
             </div>
           </div>
@@ -196,28 +188,52 @@
             <div class="partner-areas">
               <strong>Sedes / Áreas a cargo:</strong>
               <ul>
+                <li>Gerencia de Administración y Seguridad</li>
+                <li>Gerencia de Modo USIL</li>
+                <li>Facultad de Ciencias de la Salud</li>
+                <li>Facultad de Artes y Humanidades</li>
                 <li>Facultad de Derecho</li>
-                <li>Facultad de Ingeniería e IA</li>
+                <li>Facultad de Comunicación</li>
                 <li>Facultad de Educación</li>
-                <li>Vicerrectorado Académico</li>
                 <li>Vicerrectorado de Investigación</li>
               </ul>
             </div>
           </div>
 
-          <!-- Jara -->
+          <!-- Higa -->
           <div class="partner-card">
-            <img src="assets/partner_jara.png" alt="Carlos Jara" class="partner-img" />
-            <h3 class="partner-name">Carlos Jara</h3>
-            <a href="mailto:cjara@usil.edu.pe" class="partner-email"><i class="fas fa-envelope"></i> cjara@usil.edu.pe</a>
+            <img src="assets/partner_higa.jpg" alt="Melissa Higa" class="partner-img" />
+            <h3 class="partner-name">Melissa Higa</h3>
+            <a href="mailto:mhiga@usil.edu.pe" class="partner-email"><i class="fas fa-envelope"></i> mhiga@usil.edu.pe</a>
             <div class="partner-areas">
               <strong>Sedes / Áreas a cargo:</strong>
               <ul>
-                <li>Rectorado (Secretaría General - Empleabilidad e Innovación)</li>
-                <li>Instituto de Emprendedores</li>
-                <li>Gerencia de Talento y Cultura / Escuela de Posgrado</li>
-                <li>Vicepresidencia Comercial / Auditoría</li>
-                <li>Gerencia Legal / Dirección de Licenciamiento y Acreditación</li>
+                <li>Gerencia de Proyectos - Sede Perú</li>
+                <li>Gerencia de Tecnología de Información</li>
+                <li>Presidencia Ejecutiva</li>
+                <li>Rectorado</li>
+                <li>Vicepresidencia de Asuntos Corporativos</li>
+                <li>Vicepresidencia de Comunicaciones e Innovación Digital</li>
+                <li>Vicepresidencia Senior</li>
+                <li>Facultad de Ingeniería e Inteligencia Artificial</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Muñoz -->
+          <div class="partner-card">
+            <img src="assets/partner_muñoz.jpg" alt="Claudia Muñoz" class="partner-img" />
+            <h3 class="partner-name">Claudia Muñoz</h3>
+            <a href="mailto:cmunozse@usil.edu.pe" class="partner-email"><i class="fas fa-envelope"></i> cmunozse@usil.edu.pe</a>
+            <div class="partner-areas">
+              <strong>Sedes / Áreas a cargo:</strong>
+              <ul>
+                <li>Escuela de Posgrado</li>
+                <li>Gerencia Comercial</li>
+                <li>Gerencia de Talento y Cultura</li>
+                <li>Gerencia General</li>
+                <li>Rectorado</li>
+                <li>Gerencia Legal</li>
               </ul>
             </div>
           </div>
@@ -305,9 +321,6 @@
           </div>
         </div>
 
-        <div style="margin-top:20px; border-radius:12px; overflow:hidden; border: 1px solid #e2e8f0;">
-          <img src="assets/platform_banner.png" alt="Banner Informativo Plataformas" style="width:100%; display:block;" />
-        </div>
       </div>
       <div class="modal-footer">
         <button class="modal-action-close-btn" onclick="closeModal('platformsModal')">Cerrar</button>
@@ -333,13 +346,17 @@
           <ul class="parking-reqs">
             <li>
               <span class="req-title">Formato de Inscripción Vehicular</span>
-              <a href="#" class="btn-download-form"><i class="fas fa-file-arrow-down"></i> Descargar Formato</a>
+              <a href="FORMATO VEHICULAR USIL.docx" download="FORMATO VEHICULAR USIL.docx" class="btn-download-form"><i class="fas fa-file-arrow-down"></i> Descargar Formato</a>
             </li>
             <li>Copia de Brevete / Licencia de conducir (Vigente).</li>
             <li>Copia de póliza SOAT (Vigente).</li>
             <li>Copia de Tarjeta de Propiedad Vehicular (ambas caras en una sola hoja, no se acepta consulta SUNARP).</li>
             <li>Copia de Revisión Técnica vehicular (si aplica por el año del auto).</li>
           </ul>
+          <p style="font-size: 11px; color: #64748b; margin-top: 12px; line-height: 1.4; display: flex; align-items: flex-start; gap: 6px;">
+            <i class="fas fa-circle-info" style="color: #0ea5e9; margin-top: 2px;"></i>
+            <span><strong>Nota:</strong> De forma alternativa, puedes entregar este expediente físico en la oficina de <strong>Seguridad Central</strong> (Campus II, Pabellón F, mezzanine piso 1).</span>
+          </p>
         </div>
 
         <div class="parking-section">
@@ -417,9 +434,9 @@
           <p style="font-size:13px; color:#475569; margin-bottom:15px;"><i class="fas fa-location-dot"></i> Av. La Fontana 550, La Molina, Lima.</p>
           
           <div class="campus-info-layout">
-            <a href="https://www.google.com/maps/search/?api=1&query=USIL+Campus+Fernando+Belaunde+Terry+La+Fontana+La+Molina" target="_blank" class="map-link-wrapper">
+            <a href="https://www.google.com/maps/search/?api=1&query=USIL+Campus+Gran+Almirante+Miguel+Grau+La+Molina" target="_blank" class="map-link-wrapper">
               <div class="campus-map-wrap">
-                <img src="assets/campus_map_2.png" alt="Mapa Campus 2" class="campus-map-img" />
+                <img src="assets/campus_map_1.png" alt="Mapa Campus 2" class="campus-map-img" />
                 <div class="map-overlay-hint">
                   <i class="fas fa-map-marked-alt"></i> Ver en Google Maps
                 </div>
@@ -432,9 +449,8 @@
           </div>
 
           <div class="campus-details-box" style="margin-top:15px; background:#f1f5f9; padding:12px; border-radius:10px;">
-            <p style="font-size:12px; line-height:1.5; color:#334155;">
-              <strong>Tópico de Salud:</strong> Lunes a Sábado de 07:00 a 23:00 horas, Domingos de 8:00 a 18:00 horas (solo durante periodo de clases regulares).
-              <br><strong>Lactario:</strong> Ubicado al costado del comedor de colaboradores USIL.
+            <p style="font-size:12px; line-height:1.5; color:#334155; margin:0;">
+              <strong>Lactario:</strong> Ubicado al costado del comedor de colaboradores USIL.
             </p>
           </div>
         </div>
