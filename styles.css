@@ -1345,3 +1345,110 @@ body {
   font-weight: 600;
   color: #475569;
 }
+
+
+/* ==========================================================================
+   DISEÑO MODERNO (tarjetas de persona, socio con banda, acordeón, sede)
+   ========================================================================== */
+.pay-section-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 15px;
+  color: #002b5e;
+  margin: 18px 0 10px;
+}
+.pay-faq {
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  margin-bottom: 8px;
+  background: #f8fafc;
+}
+.pay-faq summary {
+  cursor: pointer;
+  padding: 11px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1e293b;
+  list-style: none;
+  display: flex; justify-content: space-between; align-items: center; gap: 8px;
+}
+.pay-faq summary::-webkit-details-marker { display: none; }
+.pay-faq summary::after { content: "+"; color: #0ea5e9; font-size: 18px; line-height: 1; }
+.pay-faq[open] summary::after { content: "−"; }
+.pay-faq p { padding: 0 14px 12px; font-size: 12px; color: #475569; line-height: 1.5; }
+.pay-faq a { color: #0ea5e9; word-break: break-all; }
+/* Sede */
+.sede-hero {
+  position: relative;
+  margin: 0 -24px 16px;
+  height: 170px;
+  overflow: hidden;
+}
+.sede-hero img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; display: block; }
+.sede-hero-text {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  padding: 28px 24px 12px;
+  background: linear-gradient(transparent, rgba(0, 20, 50, .8));
+  color: #fff;
+  display: flex; flex-direction: column;
+}
+.sede-hero-text span { font-size: 12px; opacity: .9; }
+.sede-hero-text strong { font-family: 'Oswald', sans-serif; font-size: 22px; }
+
+.sede-address { display: flex; gap: 10px; margin-bottom: 12px; }
+.sede-address > i { color: #dc2626; font-size: 18px; margin-top: 2px; }
+.sede-address strong { font-size: 14px; color: #1e293b; }
+.sede-address p { font-size: 12px; color: #64748b; }
+
+.sede-actions { display: flex; gap: 8px; margin-bottom: 12px; }
+.sede-btn {
+  flex: 1;
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  padding: 10px;
+  border-radius: 999px;
+  border: 1px solid #cbd5e1;
+  color: #002b5e;
+  font-size: 13px; font-weight: 600;
+  text-decoration: none;
+}
+.sede-btn-primary { background: #002b5e; color: #fff; border-color: #002b5e; flex: 2; }
+
+.sede-map, .sede-video {
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+}
+.sede-map iframe { width: 100%; height: 220px; border: 0; display: block; }
+.sede-video { aspect-ratio: 16 / 9; }
+.sede-video iframe { width: 100%; height: 100%; border: 0; display: block; }
+.sede-hours { display: flex; gap: 10px; margin-top: 14px; font-size: 12px; color: #475569; }
+.sede-hours i { color: #0b4f9c; margin-top: 3px; }
+
+/* Socia de negocio */
+.partner-card.solo { position: relative; overflow: hidden; padding: 0 20px 20px; max-width: 360px; margin: 0 auto; }
+.partner-band { align-self: stretch; height: 70px; margin: 0 -20px; background: linear-gradient(135deg, #002b5e, #0b4f9c); }
+.partner-card.solo .partner-img { width: 110px; height: 110px; margin-top: -55px; border: 4px solid #fff; box-shadow: 0 4px 14px rgba(0,43,94,.2); position: relative; }
+.partner-badge { font-size: 11px; font-weight: 600; color: #0b4f9c; background: #e0ecf8; border-radius: 999px; padding: 3px 10px; margin-bottom: 8px; }
+.partner-card.solo .partner-name { font-size: 22px; margin-bottom: 0; }
+.partner-sub { font-size: 12px; color: #64748b; margin-bottom: 14px; }
+.partner-cta { align-self: stretch; font-size: 13px; }
+.partner-help { font-size: 12px; color: #64748b; margin-top: 12px; line-height: 1.5; }
+.person-list { display: flex; flex-direction: column; gap: 8px; }
+.person-card { display: flex; align-items: center; gap: 12px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 10px 12px; }
+.person-avatar { flex-shrink: 0; width: 40px; height: 40px; border-radius: 50%; background: #e0ecf8; color: #002b5e; font-family: 'Oswald', sans-serif; font-weight: 600; display: flex; align-items: center; justify-content: center; }
+.person-card-info { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.person-card-info strong { font-size: 13px; color: #1e293b; }
+.person-card-info span { font-size: 11px; color: #64748b; line-height: 1.3; }
+.person-card-info small { font-size: 11px; color: #0b4f9c; font-weight: 600; }
+.person-card-actions { display: flex; gap: 6px; }
+.person-card-actions a { width: 34px; height: 34px; border-radius: 50%; background: #002b5e; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 13px; text-decoration: none; }
+.person-card-actions a:hover { background: #0b4f9c; }
+
+.partners-grid .partner-card.solo { max-width: none; margin: 0; }
+.partner-card .pay-faq { align-self: stretch; text-align: left; margin: 12px 0 0; }
+.partner-card .pay-faq ul { padding: 0 14px 12px 30px; font-size: 12px; color: #475569; }
+.partner-card .pay-faq li { margin-bottom: 4px; }
+.partner-card.solo .partner-name { text-align: center; }
+.contact-section .person-list { margin-bottom: 0; }
+.campus-info-layout .sede-map iframe { height: 100%; min-height: 200px; }
+.partner-card .partner-cta { flex: none; }
+.person-card-info small.person-mail { color: #0b4f9c; font-weight: 600; word-break: break-all; }
