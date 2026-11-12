@@ -52,3 +52,12 @@ Una vez subido el código a GitHub:
 
 ¡Listo! En unos minutos GitHub generará el enlace público de tu sitio web, el cual se verá parecido a:
 `https://TU_USUARIO.github.io/TU_REPOSITORIO/`
+
+## Preguntas del bot (Talentin) desde Excel
+
+El bot responde leyendo una hoja de **3 columnas**: `tema`, `preguntas` (separadas por `;`) y `respuesta`.
+Cada fila es un tema; para agregar uno, escribe una fila nueva. Los pasos van uno por línea (Alt+Enter).
+Opcional, al final de la respuesta: `[boton: Texto | https://enlace]`, `[imagen: foto.webp]`, `[abrir: campus 2]`.
+
+- Archivo: `plantilla_preguntas.xlsx` (y su copia `preguntas.csv`, que es la que lee el sitio).
+- Para leerla en línea, publica la hoja como CSV y pega el enlace en `FAQ_URLS` de `talentin.js`.
