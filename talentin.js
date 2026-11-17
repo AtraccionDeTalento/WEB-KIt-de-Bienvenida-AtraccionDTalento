@@ -268,6 +268,22 @@
     const n = Math.round((s[0] - hoy) / 864e5), f = s[0].toLocaleDateString('es-PE', { weekday: 'long', day: 'numeric', month: 'long' });
     return `Tu próximo pago (${s[1]}) es el **${f}** ` + (n === 0 ? '(¡es hoy!).' : `(faltan ${n} día${n > 1 ? 's' : ''}).`);
   };
+  // Pregunta con mes ("¿en diciembre qué día pagan?"): responde con la línea de ese mes del cronograma
+  const MESES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'setiembre', 'octubre', 'noviembre', 'diciembre'];
+  const pagoMes = txt => {
+    const q = norm(txt).replace('septiembre', 'setiembre'), m = MESES.findIndex(x => new RegExp('\\b' + x + '\\b').test(q));
+    if (m < 0 || !/pag|cobr|deposit|cts|grati|cierre|sueldo|abon/.test(q)) return '';
+    const mes = MESES[m], f = d => { const [a, b, c] = d.split('/'); return new Date(+c, +b - 1, +a); };
+    const largo = d => f(d).toLocaleDateString('es-PE', { weekday: 'long', day: 'numeric', month: 'long' });
+    const lin = [];
+    KB.map(e => e.a.filter(x => typeof x === 'string').join('\n')).join('\n').split('\n').forEach(l => {
+      const r = l.match(/^(.+?):\s*(?:cierre (\d{2}\/\d{2}\/\d{4}),\s*)?pago ((?:\d{2}\/\d{2}\/\d{4}(?: y )?)+)/i);
+      if (r && new RegExp('\\b' + mes + '\\b').test(norm(r[1]).replace('septiembre', 'setiembre'))) lin.push({ lbl: r[1].trim(), cierre: r[2], pagos: r[3].split(' y ') });
+    });
+    if (!lin.length) return '';
+    lin.sort((x, y) => (norm(y.lbl).trim() === mes) - (norm(x.lbl).trim() === mes));
+    return lin.map(x => (norm(x.lbl).trim() === mes ? `Pago de ${x.lbl}: **${x.pagos.map(largo).join(' y ')}**` + (x.cierre ? ` (cierre del periodo: ${largo(x.cierre)})` : '') : `${x.lbl}: **${x.pagos.map(largo).join(' y ')}**`)).join('\n');
+  };
   // ───────────── Preguntas desde Excel / Google Sheets (se actualizan en vivo) ─────────────
   // Columnas: activo | id | titulo | pregunta | respuesta | pasos | boton_texto | boton_link | imagen | seccion | relacionados | peso | modo | icono | en_menu
   
@@ -573,6 +589,8 @@
     pend = setTimeout(() => {
       tipo.remove();
       if (forzado) { fallos = 0; return responder(forzado); }
+      const pm = pagoMes(texto);
+      if (pm) { fallos = 0; row(rich('💰 ' + pm), 'b'); mood('happy', 2200); const cr = KB.find(x => /cronograma/i.test(x.label)); chips(cr ? [entryChip(cr.id)] : []); return; }
       const [top, sc] = res[0] || [null, 0];
       if (top && sc >= T_OK) {
         fallos = 0;
