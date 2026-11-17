@@ -256,6 +256,18 @@
   };
   const T_OK = 1.5, T_SUG = .7;
 
+  // {proximo_pago}: busca en las respuestas líneas como "Noviembre: cierre 13/11/2026, pago 25/11/2026" y dice la fecha que sigue
+  const proxPago = () => {
+    const L = limaNow(), hoy = new Date(L.y, L.mo - 1, L.d), fechas = [];
+    KB.map(e => e.a.filter(x => typeof x === 'string').join('\n')).join('\n').split('\n').forEach(l => {
+      const m = l.match(/^(.+?):.*\bpago\b(.*)$/i); if (!m) return;
+      for (const d of m[2].matchAll(/(\d{2})\/(\d{2})\/(\d{4})/g)) fechas.push([new Date(+d[3], +d[2] - 1, +d[1]), m[1].trim()]);
+    });
+    const s = fechas.sort((a, b) => a[0] - b[0]).find(f => f[0] >= hoy);
+    if (!s) return 'El cronograma de pagos publicado ya terminó. Por lo general se paga el 25 de cada mes; confirma la fecha exacta con Remuneraciones: msimeon@usil.edu.pe';
+    const n = Math.round((s[0] - hoy) / 864e5), f = s[0].toLocaleDateString('es-PE', { weekday: 'long', day: 'numeric', month: 'long' });
+    return `Tu próximo pago (${s[1]}) es el **${f}** ` + (n === 0 ? '(¡es hoy!).' : `(faltan ${n} día${n > 1 ? 's' : ''}).`);
+  };
   // ───────────── Preguntas desde Excel / Google Sheets (se actualizan en vivo) ─────────────
   // Columnas: activo | id | titulo | pregunta | respuesta | pasos | boton_texto | boton_link | imagen | seccion | relacionados | peso | modo | icono | en_menu
   
@@ -539,7 +551,7 @@
   const abrir = (id, tab) => { setOpen(false); if (typeof openModal === 'function') openModal(id); if (tab) { const b = document.querySelectorAll('#' + id + ' .tab-btn')[tab - 1]; if (b) b.click(); } };
 
   function responder(e, extra) {
-    let txt = (typeof e.a[0] === 'function' ? e.a[0]() : pick(e.a)).replace(/\{saludo\}/g, saludo()), acts = e.acts;
+    let txt = (typeof e.a[0] === 'function' ? e.a[0]() : pick(e.a)).replace(/\{saludo\}/g, saludo()).replace(/\{proximo_pago\}/g, proxPago), acts = e.acts;
     if (e.hoja) { acts = [...autoActs(txt, e), ...e.acts]; txt = boldear(txt.replace(/https?:\/\/\S+/g, '').replace(/ +\n/g, '\n').trim()); }
     const figs = (e.img || []).map(([s, c]) => `<figure class="tlt-fig"><img src="${s}" alt="${esc(c)}" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>${esc(c)}</figcaption></figure>`).join('');
     const lead = e.plain || txt.length > 130 || txt.includes('\n') ? '' : pick(LEAD);

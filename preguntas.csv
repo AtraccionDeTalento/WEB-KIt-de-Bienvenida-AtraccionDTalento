@@ -9,7 +9,9 @@ Seguridad y Salud en el Trabajo,seguridad y salud; salud ocupacional; sst; iperc
 • Jefe de Salud Ocupacional: Dr. Carlos Torres
 • Escríbeles: saludyseguridad@usil.edu.pe
 Aquí también te informan de tus exámenes médicos ocupacionales (EMO)."
-Mi pago,cuando pagan; cuando me pagan; cuando cae; cae el pago; cuando cobro; me depositan; ya pagaron; pagaron; fecha pago; proximo pago; mi pago; cronograma; cronograma de pagos; sueldo; cobro; cobrar; abono; deposito; dia de pago; pago; pagan; quincena; remuneracion,"El cronograma de pagos lo ves en tu inducción de Gestión Humana. Si tu pago no llegó o está incompleto, escribe a Marisol Simeon: msimeon@usil.edu.pe (indica tu nombre, DNI y el mes)."
+Mi pago,cuando pagan; cuando me pagan; cuando cae; cae el pago; cuando cobro; me depositan; ya pagaron; pagaron; fecha pago; proximo pago; mi pago; sueldo; cobro; cobrar; abono; deposito; dia de pago; pago; pagan; quincena; remuneracion,"{proximo_pago}
+Si tu pago no llegó o está incompleto, escribe a Marisol Simeon: msimeon@usil.edu.pe (indica tu nombre, DNI y el mes).
+Para ver todas las fechas, pregúntame por el cronograma de pagos."
 Mis boletas,boleta; boleta de pago; descargar boleta; bajar boleta; ver boleta; mi boleta; recibo; voucher; boucher; papel de pago,"Tus boletas están en Adryan → Mis Boletas.
 Elige el año y el mes, y descárgala"
 Consultas de pagos,certificado de pagos; certificado 5ta; quinta; 5ta; renta; impuesto; remuneraciones; consulta de pagos; planilla; descuento; me descontaron; me descontaron de mas; error en mi pago; pago incorrecto; certificado de depositos,"Para temas de pagos escribe a Remuneraciones:
@@ -190,4 +192,22 @@ Despedirse,chau; adios; hasta luego; nos vemos; bye; hasta manana; me voy,"¡Has
 Quién es Talentin,quien eres; como te llamas; tu nombre; eres un robot; eres humano; eres ia; talentin,"Soy Talentin , el asistente del Kit. Respondo con la información oficial del kit, por eso soy rápido. Si no sé algo, te digo a quién escribir."
 ¿Cómo estás?,como estas; como te va; todo bien; que tal estas,"¡Muy bien, gracias! ¿Y tú? ¿En qué te ayudo? || Con toda la energía. ¿Qué necesitas?"
 Qué puedo preguntarte,ayuda; que puedes hacer; que sabes; menu; temas; opciones; para que sirves; que haces,"Pregúntame sobre Adryan, licencias, campus y espacios, estacionamiento, seguros o contactos. Escríbelo normal, como te salga. O elige un tema:"
-Cuéntame un chiste,chiste; gracioso; hazme reir; broma,"¿Por qué el bot llegó temprano al campus? Porque no se pierde en ningún pabellón || Mi chamba es simple: tú preguntas, yo respondo. Y sin tomar cafecito || ¿Qué le dijo un bot a otro? ""Tú responde, que yo me sé el Pabellón B."""
+Cuéntame un chiste,chiste; gracioso; hazme reir; broma,IoT = Internet of Tosters
+Cronograma de pagos,cronograma de pagos; cronograma; calendario de pagos; fechas de pago; fecha de cierre; cuando es el cierre; pagos 2026; fecha de la cts; cuando pagan la grati; fecha de gratificacion; cuando depositan la cts,"Cronograma de pagos 2026 (administrativos):
+Enero: cierre 13/01/2026, pago 23/01/2026
+Febrero: cierre 12/02/2026, pago 25/02/2026
+Marzo: cierre 12/03/2026, pago 25/03/2026
+Abril: cierre 13/04/2026, pago 24/04/2026
+Mayo: cierre 12/05/2026, pago 25/05/2026
+CTS de mayo: pago 11/05/2026 y 12/05/2026
+Junio: cierre 15/06/2026, pago 25/06/2026
+Gratificación de julio: pago 07/07/2026
+Julio: cierre 10/07/2026, pago 24/07/2026
+Agosto: cierre 12/08/2026, pago 25/08/2026
+Setiembre: cierre 14/09/2026, pago 25/09/2026
+Octubre: cierre 12/10/2026, pago 23/10/2026
+CTS de noviembre: pago 09/11/2026 y 10/11/2026
+Noviembre: cierre 13/11/2026, pago 25/11/2026
+Gratificación de diciembre: pago 07/12/2026
+Diciembre: cierre 09/12/2026, pago 23/12/2026
+Las fechas pueden variar; confirma con Remuneraciones: msimeon@usil.edu.pe"
