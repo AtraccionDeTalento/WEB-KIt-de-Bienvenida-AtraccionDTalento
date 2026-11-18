@@ -422,7 +422,7 @@
             return '';
           }).trim();
           const label = v(r, 'titulo') || kw[0].replace(/[¿?]/g, '');
-          lista.push({ id: norm(label).trim().replace(/ +/g, '-') + '-' + k + i, label, icon: 'fa-circle-question', kw, a: resp.split('||').map(x => x.trim()), w: T.w, plain: T.plain, menu: T.menu,
+          lista.push({ id: norm(label).trim().replace(/ +/g, '-') + '-' + k + i, label, icon: 'fa-circle-question', kw: kw.includes(label) ? kw : [...kw, label], a: resp.split('||').map(x => x.trim()), w: T.w, plain: T.plain, menu: T.menu,
             modal: T.abrir, tab: T.tab, enMenu: T.inicio, sos: T.sos, f: [], acts: T.acts, img: T.img, hoja: 1 });
         });
       }
