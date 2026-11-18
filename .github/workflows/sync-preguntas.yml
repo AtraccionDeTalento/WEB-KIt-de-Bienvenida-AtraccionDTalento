@@ -1,0 +1,70 @@
+name: Sync Preguntas desde SharePoint
+
+on:
+  repository_dispatch:
+    types: [update-preguntas]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: ''
+
+      - name: Instalar dependencias
+        run: pip install openpyxl
+
+      - name: Procesar archivo recibido y actualizar CSV
+        env:
+          PAYLOAD_B64: ${{ github.event.client_payload.file_b64 }}
+          PAYLOAD_CSV: ${{ github.event.client_payload.csv }}
+        run: |
+          python - <<'EOF'
+          import os, base64, csv, openpyxl, io
+
+          b64 = os.environ.get('PAYLOAD_B64', '').strip()
+          raw_csv = os.environ.get('PAYLOAD_CSV', '').strip()
+
+          if b64:
+              print("Procesando archivo XLSX desde base64...")
+              data = base64.b64decode(b64)
+              with open('plantilla_preguntas.xlsx', 'wb') as f:
+                  f.write(data)
+              wb = openpyxl.load_workbook(io.BytesIO(data))
+              ws = wb.active
+              rows = [[(c.value or '') for c in r[:3]] for r in ws.iter_rows(min_row=1)]
+              rows = [r for r in rows if any(str(x).strip() for x in r)]
+              with open('preguntas.csv', 'w', encoding='utf-8', newline='') as f:
+                  csv.writer(f).writerows(rows)
+              print(f"preguntas.csv actualizado con {len(rows)} filas.")
+          elif raw_csv:
+              print("Procesando CSV directo recibido...")
+              with open('preguntas.csv', 'w', encoding='utf-8', newline='') as f:
+                  f.write(raw_csv)
+              print("preguntas.csv actualizado directamente.")
+          else:
+              print("No se recibió contenido en el payload.")
+              exit(1)
+          EOF
+
+      - name: Confirmar y subir cambios a GitHub
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add preguntas.csv plantilla_preguntas.xlsx
+          if git diff --staged --quiet; then
+            echo "Sin cambios detectados en preguntas.csv"
+          else
+            git commit -m "chore(sync): actualizar preguntas.csv desde SharePoint [skip ci]"
+            git push origin main
+          fi
